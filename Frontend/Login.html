@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    #nav {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin-bottom: 2rem;
+    }
+
+    #nav img {
+        width: 200px;
+
+    }
+
+    #nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        margin: 0 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    #nav a:hover {
+        color: #e84c3d;
+    }
+
+    #nav i {
+        margin: 0 1.5rem;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        font-size: 20px;
+    }
+
+    #nav i:hover {
+        color: #e84c3d;
+        cursor: pointer;
+    }
+
+    #first {
+        display: flex;
+        font-size: 17px;
+    }
+
+    #login h1 {
+        text-align: center;
+    }
+
+    #login input {
+        width: 250px;
+        height: 30px;
+        border-radius: 5px;
+        border-color: rgb(158, 154, 154);
+    }
+
+    #login button {
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #login button:hover {
+        cursor: pointer;
+    }
+
+    #login p:hover {
+        color: red;
+        cursor: pointer;
+
+    }
+
+    #login i {
+        font-size: 20px;
+    }
+
+    #main {
+        display: flex;
+        width: 60%;
+        margin: auto;
+    }
+
+    #signup {
+        margin-left: 20px;
+    }
+    h1{
+        text-align: center;
+    }
+
+    #signup button {
+        background-color: black;
+        width: 150px;
+        height: 35px;
+        border-radius: 5px;
+    }
+
+    #signup button a {
+        color: white;
+    }
+
+    #main-footer {
+    margin-left: 60px;
+    display: flex;
+    margin-top: 50px;
+}
+
+#main-footer div {
+    width: 400px;
+    padding: 20px;
+    border-left: 1px solid rgb(175, 174, 174);
+    border-bottom: 1px solid rgb(175, 174, 174);
+}
+
+#main-footer input {
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+#main-footer p {
+    color: gray;
+}
+
+.icon i {
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.icon {
+    display: flex;
+
+}
+
+#last-footer{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+#last-footer i{
+    font-size: 20px;
+    margin-left: 10px;
+}
+#last-footer p{
+    color: gray;
+}
+#last-footer img{
+    width: 300px;
+}
+</style>
+
+<body>
+
+    <div id="nav">
+        <div id="first">
+            <div><a href="#">Men</a></div>
+            <div><a href="#">Women</a></div>
+            <div><a href="#">Artist collab</a></div>
+            <div><a href="#">Collection</a></div>
+
+        </div>
+        <div id="sec">
+            <div><img src="./2.png" alt="" /></div>
+        </div>
+
+        <div class="icon">
+            <i class="fas fa-search"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-user"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+    </div>
+    </div>
+    <h1>Log-In</h1>
+
+    <div id="main">
+        <div>
+            <div id="login">
+                <h2>Log In</h2>
+                <form>
+                    <input type="text" id="email" placeholder="Enter E-mail"><br><br>
+                    <input type="password" id="pass" placeholder="Enter Password">
+                </form>
+                <p><u> Forgot Your Password?</u></p>
+                <button id="sing_UP" style="background-color: black; color: white;" type="submit" style="text-align: center;">Sign
+                    In</button><br>
+                <button style="background-color: rgb(57, 57, 130); color: white;">Sign In with face book <i
+                        class="fa-brands fa-facebook"></i></button><br>
+                <button style="background-color: rgb(219, 70, 70); color: white;">Sign In with Google <i
+                        class="fa-brands fa-google"></i></button>
+            </div>
+        </div>
+        <div id="signup">
+            <h2>New Customer</h2>
+            <br>
+            <p>Sign up for early Sale access plus tailored <br>new arrivals, trends and promotions. To opt <br>out, click
+                unsubscribe in our emails.</p>
+            <button><a href="">Register</a></button>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div id="main-footer">
+        <div>
+            <h4>About</h4>
+            <p>Our story</p>
+            <p>Contect us</p>
+            <p>Careers</p>
+            <p>Privacy policy</p>
+            <br>
+
+        </div>
+        <div>
+            <h4>Customer care</h4>
+            <p>Timings: 10 AM-6 PM (Mon-Sat)</p>
+            <p>Call: +7011263423</p>
+            <p>E-Mail: care@cc.com</p>
+        </div>
+
+        <div>
+            <h4>Support</h4>
+            <p>Payments</p>
+            <p>Returns/Exchange</p>
+            <p>Shipment</p>
+            <p>Terms & conditions</p>
+            <br>
+        </div>
+        <div>
+            <h4>Subscribe</h4><br>
+            <p>Enter your email below to be the first to know about new collections and product launches.</p>
+
+            <input type="email" placeholder="💌Enter your email">
+        </div>
+    </div>
+
+    <div id="last-footer">
+        <div>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div>
+            <p>© NEWBRAVE VENTURE PRIVATE LIMITED</p>
+        </div>
+        <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360" alt=""></div>
+    </div>
+
+</body>
+
+<script src="https://kit.fontawesome.com/56f4c26919.js" crossorigin="anonymous">
+</script>
+
+</html>
+<script>
+    let btn = document.getElementById('sing_UP')
+
+    btn.addEventListener('click' ,(e)=>{
+       e.preventDefault()
+       login()
+    })
+
+    function login() {
+  let data = {
+    email: document.getElementById('email').value,
+    pass: document.getElementById('pass').value
+  };
+  console.log(data);
+  fetch('http://localhost:8080/user/login', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      localStorage.setItem('token', JSON.stringify(res.token));
+      alert('Login Success!');
+      location = './index.html';
+    })
+    .catch((err) => console.log(err));
+}
+</script>

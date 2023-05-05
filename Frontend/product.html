@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #nav {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 2rem;
+  }
+
+  #nav img {
+    width: 200px;
+
+  }
+
+  #nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin: 0 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  #nav a:hover {
+    color: #e84c3d;
+  }
+
+  #nav i {
+    margin: 0 1.5rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    font-size: 20px;
+  }
+
+  #nav i:hover {
+    color: #e84c3d;
+    cursor: pointer;
+  }
+
+  #first {
+    display: flex;
+    font-size: 17px;
+  }
+
+  #mid-footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    align-items: center;
+    margin-top: 50px;
+
+  }
+
+  #mid-footer img {
+    height: 30px;
+    margin-top: 40PX;
+    margin-right: 10px;
+
+  }
+
+  .img-fot {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #main-footer {
+    margin-left: 60px;
+    display: flex;
+    margin-top: 50px;
+  }
+
+  #main-footer div {
+    width: 400px;
+    padding: 20px;
+    border-left: 1px solid rgb(175, 174, 174);
+    border-bottom: 1px solid rgb(175, 174, 174);
+  }
+
+  #main-footer input {
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+  }
+
+  #main-footer p {
+    color: gray;
+  }
+
+  .icon i {
+    font-size: 20px;
+    margin-left: 30px;
+  }
+
+  .icon {
+    display: flex;
+
+  }
+
+  #last-footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #last-footer i {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  #last-footer p {
+    color: gray;
+  }
+
+  #last-footer img {
+    width: 300px;
+  }
+
+#Products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+#Products div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#Products div img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+#Products div p.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#Products div p.price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d12a2a;
+}
+#Products div button{
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+
+}
+#Products div button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+#search{
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+#cart{
+    min-width: 500px;
+    min-height: 700px; 
+    position:absolute;
+    right: 0;
+    top: 100px;   
+    border: 1px solid black;
+    background-color: white;
+    display: none;
+}
+@media only screen and (min-width:500px) and (max-width:750px){
+  #mid-footer{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #main-footer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+  
+  .hide{
+    display: none;
+  }
+}
+
+@media only screen and (min-width:200px) and (max-width:550px){
+  #mid-footer{
+    display:grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #main-footer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+  }
+ 
+  .hide{
+    display: none;
+  }
+}
+</style>
+
+<body>
+
+  <div id="nav">
+    <div id="first">
+      <div><a href="javascript:query.set('category', 'Mens'); fetchData()">Men</a></div>
+      <div><a href="javascript:query.set('category', 'Womens'); fetchData()">Women</a></div>
+      <div class="hide"><a href="#">Artist collab</a></div>
+      <div class="hide"><a href="#">Collection</a></div>
+
+    </div>
+    <div id="sec">
+      <div id="logo"><img src="./2.png" alt="" /></div>
+    </div>
+
+    <div class="icon">
+      <input type="search" id="search" placeholder="Search Products">
+      <i id="searchLogo" class="fa-solid fa-magnifying-glass fa-beat"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-user"></i>
+      <i id="cartbtn" class="fa-solid fa-bag-shopping"></i>
+    </div>
+  </div>
+  </div>
+  <div id="Products">
+
+  </div>
+
+  <hr>
+  <div id="mid-footer">
+    <div class="img-fot">
+      <img src="https://www.koovs.com/cdn/shop/files/delivery-truck.png?v=1668332734&width=360" alt="">
+      <div>
+        <h3>Free Shipping</h3>
+        <p>For orders above INR 1500.</p>
+      </div>
+    </div>
+    <div class="img-fot">
+      <img src="https://www.koovs.com/cdn/shop/files/money-back.png?v=1668332753&width=360" alt="">
+      <div>
+        <h3>Money Guarantee</h3>
+        <p>Within 30 days for an exchange</p>
+      </div>
+    </div>
+    <div class="img-fot">
+      <img src="https://www.koovs.com/cdn/shop/files/customer-care.png?v=1668332773&width=360" alt="">
+      <div>
+        <h3>Online Support</h3>
+        <p>10 AM-6 PM, Mon-Sat</p>
+      </div>
+    </div>
+    <div class="img-fot">
+      <img src="https://www.koovs.com/cdn/shop/files/credit-card.png?v=1668332788&width=360" alt="">
+      <h3>Flexible Payment</h3>
+    </div>
+  </div>
+
+  <div id="main-footer">
+    <div>
+      <h4>About</h4>
+      <p>Our story</p>
+      <p>Contect us</p>
+      <p>Careers</p>
+      <p>Privacy policy</p>
+      <br>
+
+    </div>
+    <div>
+      <h4>Customer care</h4>
+      <p>Timings: 10 AM-6 PM (Mon-Sat)</p>
+      <p>Call: +7011263423</p>
+      <p>E-Mail: care@cc.com</p>
+    </div>
+
+    <div>
+      <h4>Support</h4>
+      <p>Payments</p>
+      <p>Returns/Exchange</p>
+      <p>Shipment</p>
+      <p>Terms & conditions</p>
+      <br>
+    </div>
+    <div>
+      <h4>Subscribe</h4><br>
+      <p>Enter your email below to be the first to know about new collections and product launches.</p>
+
+      <input type="email" placeholder="💌Enter your email">
+    </div>
+  </div>
+
+  <div id="last-footer">
+    <div>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+    <div>
+      <p>© NEWBRAVE VENTURE PRIVATE LIMITED</p>
+    </div>
+    <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360" alt="">
+    </div>
+  </div>
+
+
+  <div id="cart">
+    <span id="close"></span>
+  </div>
+</body>
+
+<script src="https://kit.fontawesome.com/56f4c26919.js" crossorigin="anonymous"></script>
+
+</html>
+<script>
+  let Products = document.getElementById('Products')
+
+let query =new URLSearchParams
+
+  function fetchData() {
+    fetch('http://localhost:8080/product/?'+query.toString())
+      .then(response => response.json())
+      .then(data => displayData(data))
+
+      .catch(error => console.error(error))
+  }
+  fetchData()
+
+  function displayData(data) {
+    Products.innerHTML = ''
+    data.forEach(e => {
+      let div = document.createElement('div')
+      let imdiv = document.createElement('div')
+      let img = document.createElement('img')
+      let title = document.createElement('p')
+      let price = document.createElement('p')
+      let btn= document.createElement('button')
+
+      img.src = e.img
+      title.innerText = e.title
+      price.innerText = 'Rs. ' + e.price
+      btn.innerText = 'Buy Now'
+      btn.addEventListener('click', ()=>{
+        buyNow(e)
+      })
+
+      imdiv.append(img)
+      div.append(imdiv, title, price,btn)
+      Products.append(div)
+    });
+  }
+
+  let logo = document.getElementById('logo')
+  logo.addEventListener('click', ()=>{
+    location='/Frontend/index.html'
+  })
+
+  let search = document.getElementById('search')
+
+  let searchLogo = document.getElementById('searchLogo')
+
+  searchLogo.addEventListener('click', ()=>{
+    search.style.display = "block"
+  })
+
+  searchLogo.addEventListener('dblclick', ()=>{
+    search.style.display = "none"
+  })
+
+  function buyNow(data , token){
+    fetch('http://localhost:8080/cart/addtocart',{
+      method:'POST',
+      headers:{'content-type':'application/json',
+      'authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU0ZDRkZjMwMmE5MTY5YmE3OTk4YzYiLCJ1c2VyIjoiYWJoYXkgcGF0aGFrIiwiaWF0IjoxNjgzMjgxMTQ4fQ.2-JagZaEvNRG0gk1pXR4f58ROb3kPNKLjcCCLqfDk-E'
+    },
+      body: JSON.stringify(data)
+    }).then(res=>res.json())
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+  }
+let cartbtn = document.getElementById('cartbtn')
+let cart = document.getElementById('cart')
+
+cartbtn.addEventListener('click', ()=>{
+  cart.style.display='block'
+})
+
+search.oninput=()=>{
+  query.set('search',search.value)
+  fetchData()
+}
+
+</script>
