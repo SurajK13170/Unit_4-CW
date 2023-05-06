@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random OTP Generator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #3e8e41;
+}
+
+.otp-section {
+  margin-top: 30px;
+  display: none;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.otp-input {
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  transition: border-color 0.2s ease;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.otp-instruction {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+</style>
+<body>
+	<div class="container">
+		<h1>Random OTP Generator</h1>
+		<p>Click the button below to generate a random OTP.</p>
+		<button id="generate-otp-btn" class="btn">Generate OTP</button>
+		<div id="otp-section" class="otp-section">
+			<p class="otp-instruction">Enter the OTP below:</p>
+			<div class="otp-inputs">
+				<input type="text" id="otp-input-1" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-2" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-3" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-4" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-5" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-6" class="otp-input" maxlength="1">
+			</div>
+			<button id="verify-otp-btn" class="btn">Verify OTP</button>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
+<script>
+    function generateOTP() {
+        let digits = '0123456789';
+        let otp = '';
+        for (let i = 0; i < 6; i++) {
+            otp += digits[Math.floor(Math.random() * 10)];
+        }
+        return otp;
+    }
+
+    function showOTPSection(otp) {
+    const otpInputs = document.querySelectorAll('.otp-input');
+    otpInputs.forEach((input, i) => {
+        input.value = '';
+        input.placeholder = otp[i];
+
+        input.addEventListener('input', function() {
+            if (this.value.length === this.maxLength) {
+                const nextInput = document.getElementById(`otp-input-${i+2}`);
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        });
+    });
+    document.getElementById('otp-section').style.display = 'block';
+}
+
+
+    document.getElementById('generate-otp-btn').addEventListener('click', function() {
+        let otp = generateOTP();
+        showOTPSection(otp);
+    });
+
+    document.getElementById('verify-otp-btn').addEventListener('click', function() {
+        let otp = '';
+        otp += document.getElementById('otp-input-1').value;
+        otp += document.getElementById('otp-input-2').value;
+        otp += document.getElementById('otp-input-3').value;
+        otp += document.getElementById('otp-input-4').value;
+        otp += document.getElementById('otp-input-5').value;
+        otp += document.getElementById('otp-input-6').value;
+    });
+    document.getElementById('verify-otp-btn').addEventListener('click', function() {
+    let enteredOTP = '';
+    enteredOTP += document.getElementById('otp-input-1').value;
+    enteredOTP += document.getElementById('otp-input-2').value;
+    enteredOTP += document.getElementById('otp-input-3').value;
+    enteredOTP += document.getElementById('otp-input-4').value;
+    enteredOTP += document.getElementById('otp-input-5').value;
+    enteredOTP += document.getElementById('otp-input-6').value;
+    
+    let generatedOTP = localStorage.getItem('otp');
+    
+    if (enteredOTP === generatedOTP) {
+        alert('Success! The entered OTP is correct.');
+    } else {
+        alert('Error! The entered OTP is incorrect.');
+    }
+});
+</script>
