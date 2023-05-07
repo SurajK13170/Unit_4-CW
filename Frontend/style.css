@@ -11,6 +11,8 @@
     padding: 10px;
 }
 
+/* Default styles for navigation bar */
+
 #nav {
     position: sticky;
     top: 0;
@@ -18,48 +20,137 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(149, 147, 147, 0.2) 0px 2px 8px 0px;
     margin-bottom: 2rem;
-  }
-  #nav img{
+}
+
+#nav img {
     width: 200px;
-    
-  }
-  
-  
-  #nav a {
+}
+
+#nav a {
     text-decoration: none;
     color: black;
     font-weight: bold;
     margin: 0 1.5rem;
     transition: all 0.3s ease;
-  }
-  
-  #nav a:hover {
+}
+
+#nav a:hover {
     color: #e84c3d;
-  }
-  
-  #nav i {
+}
+
+#nav i {
     margin: 0 1.5rem;
     font-size: 1.5rem;
     transition: all 0.3s ease;
     font-size: 20px;
+}
 
-  }
-  
-  #nav i:hover {
+#nav i:hover {
     color: #e84c3d;
     cursor: pointer;
+}
+
+/* Media query for mobile devices */
+
+@media (max-width: 768px) {
+    #images{
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    #nav {
+        flex-wrap: wrap;
+    }
+    
+    #first {
+        flex-basis: 100%;
+        order: 2;
+        display: none;
+    }
+    
+    .hide {
+        display: block;
+    }
+    
+    #sec {
+        flex-basis: 100%;
+        order: 1;
+        margin-bottom: 1rem;
+    }
+    
+    #nav img {
+        width: 150px;
+    }
+    
+    #search {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    #searchLogo {
+        margin-right: 0.5rem;
+    }
+    
+    .icon {
+        order: 3;
+        flex-basis: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f2f2f2;
+    }
+    
+    #user {
+        display: none;
+    }
+    
+    #logout {
+        display: none;
+    }
+    
+    #cartbtn {
+        font-size: 1.5rem;
+    }
+
+}
+#mid-footer{
+    display:grid;
+    grid-template-columns: repeat(1, 1fr);
   }
+  #main-footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+  #mens{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  }
+  #women{
+      display: grid;
+      grid-template-columns: repeat(3 ,1fr);
+  }
+  #mid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+  }
+
+#first {
+    display: flex;
+    font-size: 17px;
+}
 
 #images {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 50px;
+    margin-top: 40px;
 }
 
 #images img {
-    width: 400px;
+    width: 350px;
 }
 
 #mid {
@@ -210,3 +301,106 @@ h1 {
 #last-footer img{
     width: 300px;
 }
+#user{
+    font-size: 20px;
+}
+
+#search{
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+
+  
+  #logout{
+    width: 100px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #logout:hover{
+    color: red;
+    font-weight: bold;
+  }
+
+  @media (max-width: 900px){
+    #mid-footer{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    #main-footer{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  
+    }
+    #mens{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #women{
+        display: grid;
+        grid-template-columns: repeat(3 ,1fr);
+    }
+    #mid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .hide{
+      display: none;
+    }
+    #search{
+        display: none;
+    }
+  }
+  
+  @media only screen and (min-width:200px) and (max-width:500px){
+    #mid-footer{
+      display:grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    #main-footer{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  
+    }
+    #mens{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #women{
+        display: grid;
+        grid-template-columns: repeat(2 ,1fr);
+    }
+    #mid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+   
+    .hide{
+      display: none;
+    }
+    #search{
+        display: none;
+    }
+  }
+  @media only screen and (min-width:1200px) and (max-width:800px){
+    .hide{
+        display: none;
+      }
+      #search{
+        display: none;
+      }
+   
+  }
+  
+  @media only screen and (min-width:300px) and (max-width:200){
+   
+   
+    .hide{
+      display: none;
+    }
+  }

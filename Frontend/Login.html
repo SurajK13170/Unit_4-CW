@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products</title>
+    <title>Log in</title>
 </head>
 <style>
     * {
@@ -64,7 +64,7 @@
 
     #login input {
         width: 250px;
-        height: 30px;
+        height: 40px;
         border-radius: 5px;
         border-color: rgb(158, 154, 154);
     }
@@ -99,8 +99,10 @@
 
     #signup {
         margin-left: 20px;
+        margin-top: 15px;
     }
-    h1{
+
+    h1 {
         text-align: center;
     }
 
@@ -109,60 +111,71 @@
         width: 150px;
         height: 35px;
         border-radius: 5px;
-    }
-
-    #signup button a {
         color: white;
     }
 
+    #signup button:hover {
+        background-color: white;
+        color: black;
+        width: 150px;
+        height: 35px;
+        border-radius: 5px;
+        border: 3px solid black;
+    }
+
+
+
     #main-footer {
-    margin-left: 60px;
-    display: flex;
-    margin-top: 50px;
-}
+        margin-left: 60px;
+        display: flex;
+        margin-top: 50px;
+    }
 
-#main-footer div {
-    width: 400px;
-    padding: 20px;
-    border-left: 1px solid rgb(175, 174, 174);
-    border-bottom: 1px solid rgb(175, 174, 174);
-}
+    #main-footer div {
+        width: 400px;
+        padding: 20px;
+        border-left: 1px solid rgb(175, 174, 174);
+        border-bottom: 1px solid rgb(175, 174, 174);
+    }
 
-#main-footer input {
-    width: 300px;
-    padding: 12px;
-    border-radius: 5px;
-}
+    #main-footer input {
+        width: 300px;
+        padding: 12px;
+        border-radius: 5px;
+    }
 
-#main-footer p {
-    color: gray;
-}
+    #main-footer p {
+        color: gray;
+    }
 
-.icon i {
-    font-size: 20px;
-    margin-left: 30px;
-}
+    .icon i {
+        font-size: 20px;
+        margin-left: 30px;
+    }
 
-.icon {
-    display: flex;
+    .icon {
+        display: flex;
 
-}
+    }
 
-#last-footer{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-}
-#last-footer i{
-    font-size: 20px;
-    margin-left: 10px;
-}
-#last-footer p{
-    color: gray;
-}
-#last-footer img{
-    width: 300px;
-}
+    #last-footer {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #last-footer i {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    #last-footer p {
+        color: gray;
+    }
+
+    #last-footer img {
+        width: 300px;
+    }
 </style>
 
 <body>
@@ -176,7 +189,7 @@
 
         </div>
         <div id="sec">
-            <div><img src="./2.png" alt="" /></div>
+            <div id="logo"><img src="./2.png" alt="" /></div>
         </div>
 
         <div class="icon">
@@ -190,7 +203,7 @@
     <h1>Log-In</h1>
 
     <div id="main">
-        <div>
+        <div style="margin-right: 50px;">
             <div id="login">
                 <h2>Log In</h2>
                 <form>
@@ -198,7 +211,8 @@
                     <input type="password" id="pass" placeholder="Enter Password">
                 </form>
                 <p><u> Forgot Your Password?</u></p>
-                <button id="sing_UP" style="background-color: black; color: white;" type="submit" style="text-align: center;">Sign
+                <button id="sing_UP" style="background-color: black; color: white;" type="submit"
+                    style="text-align: center;">Sign
                     In</button><br>
                 <button style="background-color: rgb(57, 57, 130); color: white;">Sign In with face book <i
                         class="fa-brands fa-facebook"></i></button><br>
@@ -209,9 +223,10 @@
         <div id="signup">
             <h2>New Customer</h2>
             <br>
-            <p>Sign up for early Sale access plus tailored <br>new arrivals, trends and promotions. To opt <br>out, click
+            <p style="color: gray;">Sign up for early Sale access plus tailored <br>new arrivals, trends and promotions. To opt <br>out,
+                click
                 unsubscribe in our emails.</p>
-            <button><a href="">Register</a></button>
+            <button id="register">Register</button>
         </div>
     </div>
     <br>
@@ -257,7 +272,8 @@
         <div>
             <p>© NEWBRAVE VENTURE PRIVATE LIMITED</p>
         </div>
-        <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360" alt=""></div>
+        <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360"
+                alt=""></div>
     </div>
 
 </body>
@@ -269,14 +285,39 @@
 <script>
     let btn = document.getElementById('sing_UP')
 
-    btn.addEventListener('click' ,(e)=>{
-       e.preventDefault()
+    btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        login()
     })
 
-    function login(){
-        let data ={
-        email:document.getElementById('email').value,
-        pass:document.getElementById('pass')
-        } 
+    function login() {
+        let data = {
+            email: document.getElementById('email').value,
+            pass: document.getElementById('pass').value
+        };
+        console.log(data);
+        fetch('http://localhost:8080/user/login', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                localStorage.setItem('user', JSON.stringify(res.user));
+                localStorage.setItem('token', JSON.stringify(res.token));
+                alert('Login Success!');
+                location = './index.html';
+            })
+            .catch((err) => console.log(err));
     }
+
+    let register = document.getElementById('register')
+    register.addEventListener('click', (e) => {
+        location = '/Frontend/signup.html'
+    })
+
+    let logo = document.getElementById('logo').addEventListener('click', ()=>{location='./index.html'})
 </script>

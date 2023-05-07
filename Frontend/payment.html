@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Payment Page</title>
+</head>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: Arial, sans-serif;
+	}
+
+	.cont {
+		max-width: 500px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	h1 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	form {
+		background-color: #f9f9f9;
+		border: 1px solid #ccc;
+		padding: 20px;
+	}
+
+	.form-group {
+		margin-bottom: 10px;
+	}
+
+	label {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	input[type="text"],
+	input[type="email"] {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		margin-bottom: 15px;
+	}
+
+	button[type="submit"] {
+		background-color: #4CAF50;
+		color: #fff;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		float: right;
+	}
+
+	button[type="submit"]:hover {
+		background-color: #45a049;
+	}
+
+	/* OTP gen/ */
+
+
+	.container {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 40px 20px;
+		background-color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: none;
+	}
+
+	h1 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.btn {
+		display: block;
+		margin: 0 auto;
+		padding: 10px 20px;
+		background-color: #4CAF50;
+		color: white;
+		border: none;
+		border-radius: 3px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+	.btn:hover {
+		background-color: #3e8e41;
+	}
+
+	.otp-section {
+		margin-top: 30px;
+		display: none;
+	}
+
+	.otp-inputs {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 10px;
+	}
+
+	.otp-input {
+		margin: 0 10px;
+		width: 40px;
+		height: 40px;
+		border-radius: 3px;
+		border: 1px solid #ddd;
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+		transition: border-color 0.2s ease;
+	}
+
+	.otp-input:focus {
+		outline: none;
+		border-color: #4CAF50;
+	}
+
+	.otp-instruction {
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+</style>
+
+<body>
+	<div class="cont">
+		<h1>Payment Information</h1>
+		<form>
+			<div class="form-group">
+				<label for="card-number">Card Number</label>
+				<input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+			</div>
+			<div class="form-group">
+				<label for="expiry-date">Expiry Date</label>
+				<input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" required>
+			</div>
+			<div class="form-group">
+				<label for="cvv">CVV</label>
+				<input type="text" id="cvv" name="cvv" placeholder="Enter your CVV" required>
+			</div>
+			<div class="form-group">
+				<label for="name-on-card">Name on Card</label>
+				<input type="text" id="name-on-card" name="name-on-card" placeholder="Enter the name on your card"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="billing-address">Billing Address</label>
+				<input type="text" id="billing-address" name="billing-address" placeholder="Enter your billing address"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email Address</label>
+				<input type="email" id="email" name="email" placeholder="Enter your email address" required>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone Number</label>
+				<input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+			</div>
+			<button id="Pay" type="submit" class="btn">Proceed to Pay</button>
+		</form>
+	</div>
+	<div class="container">
+		<button id="generate-otp-btn" class="btn">Get OTP</button>
+		<div id="otp-section" class="otp-section">
+			<p class="otp-instruction">Enter the OTP below:</p>
+			<div class="otp-inputs">
+				<input type="text" id="otp-input-1" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-2" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-3" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-4" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-5" class="otp-input" maxlength="1">
+				<input type="text" id="otp-input-6" class="otp-input" maxlength="1">
+			</div>
+			<button id="verify-otp-btn" class="btn">Verify OTP</button>
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>
+<script>
+	function generateOTP() {
+		let digits = '0123456789';
+		let otp = '';
+		for (let i = 0; i < 6; i++) {
+			otp += digits[Math.floor(Math.random() * 10)];
+		}
+		return otp;
+	}
+
+	function showOTPSection(otp) {
+		const otpInputs = document.querySelectorAll('.otp-input');
+		otpInputs.forEach((input, i) => {
+			input.value = '';
+			input.placeholder = otp[i];
+
+			input.addEventListener('input', function () {
+				if (this.value.length === this.maxLength) {
+					const nextInput = document.getElementById(`otp-input-${i + 2}`);
+					if (nextInput) {
+						nextInput.focus();
+					}
+				}
+			});
+		});
+		document.getElementById('otp-section').style.display = 'block';
+	}
+
+	let otpG;
+	document.getElementById('generate-otp-btn').addEventListener('click', function () {
+		otpG = generateOTP();
+		showOTPSection(otpG);
+	});
+
+	document.getElementById('verify-otp-btn').addEventListener('click', function () {
+		let otp = '';
+		otp += document.getElementById('otp-input-1').value;
+		otp += document.getElementById('otp-input-2').value;
+		otp += document.getElementById('otp-input-3').value;
+		otp += document.getElementById('otp-input-4').value;
+		otp += document.getElementById('otp-input-5').value;
+		otp += document.getElementById('otp-input-6').value;
+	});
+	document.getElementById('verify-otp-btn').addEventListener('click', function () {
+		let enteredOTP = '';
+		enteredOTP += document.getElementById('otp-input-1').value;
+		enteredOTP += document.getElementById('otp-input-2').value;
+		enteredOTP += document.getElementById('otp-input-3').value;
+		enteredOTP += document.getElementById('otp-input-4').value;
+		enteredOTP += document.getElementById('otp-input-5').value;
+		enteredOTP += document.getElementById('otp-input-6').value;
+
+		let generatedOTP = localStorage.getItem('otp');
+
+		if (enteredOTP === otpG) {
+			alert('Success! The entered OTP is correct.');
+			location = './index.html'
+		} else {
+			alert('Error! The entered OTP is incorrect.');
+		}
+	});
+
+	let cont = document.getElementsByClassName('cont')[0]
+
+
+	let form = document.querySelector('form')
+
+	let otpDiv= document.getElementsByClassName('container')[0]
+	form.addEventListener('submit', (e)=>{
+		e.preventDefault()
+		otpDiv.style.display = 'block'
+		cont.style.opacity = '10%'
+	})
+
+	
+</script>

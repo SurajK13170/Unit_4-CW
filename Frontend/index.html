@@ -11,28 +11,38 @@
 
 <body>
     <div id="nav">
-        <div><a href="#">Men</a></div>
-        <div><a href="#">Women</a></div>
-        <div><a href="#">Artist collab</a></div>
-        <div><a href="#">Collection</a></div>
-        <div><img src="./2.png" alt=""></div>
+        <div id="first">
+            <div><a href="#">Men</a></div>
+            <div><a href="#">Women</a></div>
+            <div class="hide"><a href="#">Artist collab</a></div>
+            <div class="hide"><a href="#">Collection</a></div>
+
+        </div>
+        <div id="sec">
+            <div><img src="./2.png" alt="" /></div>
+        </div>
 
         <div class="icon">
-            <i class="fas fa-search"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-user"></i>
-            <i class="fa-solid fa-bag-shopping"></i>
+            <input type="search" id="search" placeholder="Search Products">
 
+            <i id="searchLogo" class="fa-solid fa-magnifying-glass fa-beat"></i>
+
+            <i class="fa-regular fa-star"></i>
+            <i id="userlogo" class="fa-regular fa-user"></i><span id="user"></span>
+            <button id="logout" onclick="localStorage.clear(); location='./index.html'"><i class="fa-solid fa-user-xmark fa-shake"></i>Logout</button>
+
+            <i id="cartbtn" class="fa-solid fa-bag-shopping"></i>
         </div>
     </div>
-    
-        <div style=" display: flex;">
-            <img style="width: 50%;"
-                src="https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Wome-1683005789.jpg" alt="">
-            <img style="width: 50%;"
-                src="https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Men-1683005789.jpg" alt="">
-        </div>
-        <div id="main">
+
+    <div style=" display: flex;">
+        <img style="width: 50%;"
+            src="https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Men-1683005789.jpg" alt="">
+        <img style="width: 50%;"
+            src="https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Wome-1683005789.jpg" alt="">
+
+    </div>
+    <div id="main">
         <div id="images">
             <img src="https://www.koovs.com/cdn/shop/files/artist_edite_sections_3.jpg?v=1677675569&width=533" alt="">
             <img src="https://www.koovs.com/cdn/shop/files/artist_edite_sections_re-01.jpg?v=1675945931&width=533"
@@ -243,12 +253,18 @@
             <div>
                 <p>© NEWBRAVE VENTURE PRIVATE LIMITED</p>
             </div>
-            <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360" alt=""></div>
+            <div><img src="https://www.koovs.com/cdn/shop/files/payment-removebg-preview-01.png?v=1668333198&width=360"
+                    alt=""></div>
         </div>
 
     </div>
 
+    <!-- Cart -->
+
+    
+
 </body>
 <script src="https://kit.fontawesome.com/56f4c26919.js" crossorigin="anonymous"></script>
+<script src="./index.js"></script>
 
 </html>

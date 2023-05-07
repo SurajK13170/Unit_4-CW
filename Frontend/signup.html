@@ -157,54 +157,133 @@
     }
 
     #form input {
-        width: 350px;
-        height: 45px;
-        border-radius: 5px;
-        border-color: rgb(234, 229, 229);
-    }
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  border: 2px solid #eae5e5;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
 
-    i {
-        font-size: 20px;
-        margin-left: 10px;
-    }
+i {
+  font-size: 20px;
+  margin-left: 10px;
+}
 
-    #reg {
-        width: 350px;
-        height: 45px;
-        background-color: black;
-        color: white;
-        border-radius: 5px;
-    }
+#reg {
+  width: 100%;
+  height: 45px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    #log {
-        width: 350px;
-        height: 45px;
-        background-color: white;
-        color: black;
-        border-radius: 5px;
-    }
+#log {
+  width: 100%;
+  height: 45px;
+  background-color: white;
+  color: black;
+  border: 2px solid #eae5e5;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    #face {
-        width: 350px;
-        height: 45px;
-        background-color: rgb(57, 57, 130);
-        color: white;
-        border-radius: 5px;
-    }
+#face {
+  width: 100%;
+  height: 45px;
+  background-color: rgb(57, 57, 130);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    #sig {
-        width: 350px;
-        height: 45px;
-        background-color: rgb(219, 70, 70);
-        color: white;
-        border-radius: 5px;
-    }
+#sig {
+  width: 100%;
+  height: 45px;
+  background-color: rgb(219, 70, 70);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    #regis {
-        width: 450px;
-        padding: 20px;
-        margin: auto;
-    }
+#regis {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  #form input {
+    width: 48%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+  
+  #form input:last-of-type {
+    margin-right: 0;
+  }
+  
+  #reg {
+    width: 48%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+  
+  #reg:last-of-type {
+    margin-right: 0;
+  }
+  
+  #log {
+    width: 48%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+  
+  #log:last-of-type {
+    margin-right: 0;
+  }
+  
+  #face {
+    width: 48%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+  
+  #face:last-of-type {
+    margin-right: 0;
+  }
+  
+  #sig {
+    width: 48%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+  
+  #sig:last-of-type {
+    margin-right: 0;
+  }
+  
+  #regis {
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
 </style>
 
 <body>
@@ -329,14 +408,18 @@ function submitdata(){
         headers:{'content-type':'application/json'},
         body:JSON.stringify(data)
     }).then((res)=>{
-        if(res.status==200){
-            return res.json()
-        }else{
-            throw res.text()
-        }
+        if(res.ok) return res.json()
+        throw res.text();
     })
-    .then(res=>console.log(res))
-    .catch((err)=>{alert(err)})
+    .then(res=>{
+        alert('Register Success!')
+        location = './Login.html'
+    })
+    .catch(err => err.then(alert))
 }
+let log = document.getElementById('log')
+log.addEventListener('click', ()=>{
+    location= './Login.html'
+})
 
 </script>
