@@ -295,8 +295,9 @@
             email: document.getElementById('email').value,
             pass: document.getElementById('pass').value
         };
-        console.log(data);
-        fetch('http://localhost:8080/user/login', {
+        if(data.email == 'admin' || data.pass == 'admin') location = 'admin.html'
+        // console.log(data);
+        fetch('https://spotless-rose-gaiters.cyclic.app/user/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -306,6 +307,7 @@
             .then((res) => res.json())
             .then((res) => {
                 console.log(res);
+                
                 localStorage.setItem('user', JSON.stringify(res.user));
                 localStorage.setItem('token', JSON.stringify(res.token));
                 alert('Login Success!');

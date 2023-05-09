@@ -27,4 +27,6 @@ cartBtn.addEventListener("click", () => {
 });
 
 
-
+let btn = document.getElementById('btn').addEventListener('click', ()=>{
+  location = './product.html'
+})

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    nav ul li:last-child {
+        margin-right: 0;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    section h2 {
+        margin-top: 0;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .hidden {
+        opacity: 0;
+        display: none;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #prodDiv {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 20px;
+        justify-items: center;
+    }
+
+    #prodDiv div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    #prodDiv div img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    #prodDiv div p.title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    #prodDiv div p.price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #d12a2a;
+    }
+
+    #prodDiv div button {
+        width: 100px;
+        height: 35px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+
+    }
+
+    #prodDiv div button:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table button {
+        border-radius: 5px;
+        width: 100px;
+        height: 30px;
+        border: none;
+        background-color: black;
+        color: white;
+
+    }
+
+    table button:hover {
+        border-color: red;
+        background-color: black;
+        color: red;
+
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    td:hover {
+        background-color: #ebebeb;
+        transition: background-color 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    td:first-child {
+        border-left: 10px solid transparent;
+        position: relative;
+    }
+
+    td:first-child:hover:before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        border: 10px solid transparent;
+        border-left-color: #ccc;
+        border-top-color: #ccc;
+    }
+
+    td:last-child {
+        border-right: 10px solid transparent;
+        position: relative;
+    }
+
+    td:last-child:hover:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        border: 10px solid transparent;
+        border-right-color: #ccc;
+        border-bottom-color: #ccc;
+    }
+
+    .add {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 60px;
+
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 50px 50px -50px darkslategray;
+    }
+
+    #admin_form {
+        width: 350px;
+        margin-right: 30px;
+    }
+
+    #admin_form h2 {
+        color: #1c1c1e;
+        margin-bottom: 20px;
+    }
+
+    #admin_form input {
+        border: none;
+        outline: none;
+        border-radius: 0;
+        width: 100%;
+        height: 30px;
+        border-bottom: 2px solid #1c1c1e;
+        margin-bottom: 25px;
+        padding: 7px 0;
+        font-size: 14px;
+    }
+
+    #submit {
+        color: white;
+        background-color: #1c1c1e;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        font-size: 14px;
+        padding: 5px 12px;
+        font-weight: 500;
+        width: 200px;
+        height: 40px;
+    }
+
+    #admin_form input[type="text"] {
+        font-size: 18px;
+        /* set the font size of the input text /
+  padding: 10px;
+  / set the padding around the input text */
+    }
+
+    .form h2 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    #total_user{
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+
+            <ul>
+                <li><a href="#" id="dashboard">Add Products</a></li>
+                <li><a href="#" id="user">Users</a></li>
+                <li><a href="#" id="product">Products</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+
+            <h2>Dashboard</h2>
+            <p>Welcome to the admin dashboard.</p>
+        </section>
+        <div id="dashboardDiv" class="hidden">
+            <div id="total"><h3>Total Active User: &nbsp; <i class="fa-solid fa-user"></i> &nbsp;  <span id="total_user">0</span></h3></div>
+            <div class="form">
+                <div>
+                    <h2>Add New Products</h2>
+                </div>
+                <form id="admin_form" action="">
+                    <input id="title" type="text" placeholder="Title" required>
+                    <input id="price" type="text" placeholder="Price" required>
+                    <input id="image" type="text" placeholder="Image URL" required>
+                    <input id="Category" type="text" placeholder="Category" required>
+                    <input id="Quantity" type="text" placeholder="Quantity" required>
+                    <input id="submit" type="submit">
+                </form>
+            </div>
+
+
+        </div>
+
+        <div id="userDiv" class="hidden">
+            <table>
+                <thead>
+                    <th>User Name</th>'
+                    <th>User Age</th>
+                    <th>User City</th>
+                    <th>User E-Mail</th>
+                    <th>Password</th>
+                    <th>Action</th>
+
+                <tbody id="tbody">
+
+                </tbody>
+                </thead>
+            </table>
+
+            <!-- Append Users here -->
+
+        </div>
+        <div id="prodDiv" class="hidden">
+
+
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Admin Page</p>
+    </footer>
+</body>
+<script src="https://kit.fontawesome.com/56f4c26919.js" crossorigin="anonymous"></script>
+
+</html>
+<script>
+
+    let total_user = document.getElementById('total_user')
+
+    const button1 = document.getElementById("user");
+    const button2 = document.getElementById("product");
+    const button3 = document.getElementById("dashboard");
+    const userDiv = document.getElementById("userDiv");
+    const prodDiv = document.getElementById("prodDiv");
+    const dashboardDiv = document.getElementById("dashboardDiv");
+
+    button1.addEventListener("click", () => {
+        userDiv.classList.add("visible");
+        userDiv.classList.remove("hidden");
+        prodDiv.classList.add("hidden");
+        prodDiv.classList.remove("visible");
+        dashboardDiv.classList.add("hidden");
+        dashboardDiv.classList.remove("visible");
+    });
+
+    button2.addEventListener("click", () => {
+        prodDiv.classList.add("visible");
+        prodDiv.classList.remove("hidden");
+        userDiv.classList.add("hidden");
+        userDiv.classList.remove("visible");
+        dashboardDiv.classList.add("hidden");
+        dashboardDiv.classList.remove("visible");
+    });
+
+    button3.addEventListener("click", () => {
+        dashboardDiv.classList.add("visible");
+        dashboardDiv.classList.remove("hidden");
+        prodDiv.classList.add("hidden");
+        prodDiv.classList.remove("visible");
+        userDiv.classList.add("hidden");
+        userDiv.classList.remove("visible");
+    });
+
+    button3.click()
+
+    let query = new URLSearchParams(window.location.search);
+    function fetchData() {
+        fetch('https://spotless-rose-gaiters.cyclic.app/product/?' + query.toString())
+            .then(response => response.json())
+            .then(data => displayData(data))
+            .catch(error => console.error(error))
+    }
+    fetchData()
+
+    function displayData(data) {
+        prodDiv.innerHTML = ''
+        data.forEach(e => {
+            let div = document.createElement('div')
+            let imdiv = document.createElement('div')
+            imdiv.classList.add('cardImg')
+            let img = document.createElement('img')
+            let title = document.createElement('p')
+            let price = document.createElement('p')
+            let btn = document.createElement('button')
+            let deleteBtn = document.createElement('button')
+
+
+            img.src = e.img
+            title.innerText = e.title
+            price.innerText = 'Rs. ' + e.price
+            btn.innerText = 'Edit'
+            deleteBtn.innerText = 'Delete'
+
+            btn.addEventListener('click', () => {
+                const newPrice = Number(prompt('Update Price'));
+                if (isNaN(newPrice)) {
+                    alert('Please enter a valid number');
+                    return;
+                }
+                fetch('https://spotless-rose-gaiters.cyclic.app/product/update/' + e._id, {
+                    method: 'PATCH',
+                    headers: {'content-type': 'application/json'},
+                    body: JSON.stringify({ price: newPrice })
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        fetchData();
+                    });
+            });
+
+
+            deleteBtn.onclick = () => {
+                fetch('https://spotless-rose-gaiters.cyclic.app/product/delete/' + e._id, {
+                    method: 'DELETE',
+                }).then(res => res.json())
+                    .then(res => {
+                        fetchData();
+                    });
+            }
+
+            imdiv.append(img)
+            div.append(imdiv, title, price, btn, deleteBtn)
+            prodDiv.append(div)
+        });
+    }
+
+    let tbody = document.getElementById('tbody')
+    function fetchUser() {
+        fetch('https://spotless-rose-gaiters.cyclic.app/user')
+            .then(response => response.json())
+            .then(data => {
+                total_user.innerText = data.length
+                userUI(data)
+                console.log(data)
+            })
+            .catch(error => console.error(error))
+    }
+    fetchUser()
+
+
+    function userUI(data) {
+        tbody.innerHTML = '';
+
+
+        for (let i = 0; i < data.length; i++) {
+            const el = data[i];
+
+            let tr = document.createElement('tr');
+            let name = document.createElement('td');
+            let age = document.createElement('td');
+            let email = document.createElement('td');
+            let city = document.createElement('td');
+            let pass = document.createElement('td');
+            let btn = document.createElement('button');
+
+            name.textContent = el.name;
+            age.textContent = el.age;
+            email.textContent = el.email;
+            city.textContent = el.city;
+            pass.textContent = el.pass;
+            btn.textContent = 'Delete';
+
+            btn.onclick = () => {
+                fetch("https://spotless-rose-gaiters.cyclic.app/user/delete/" + el._id, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        fetchUser();
+                    });
+            }
+
+            tr.append(name, age, city, email, pass, btn);
+            tbody.append(tr);
+        }
+    }
+
+    const form = document.getElementById('admin_form');
+
+form.addEventListener('submit', (event) => {
+  // prevent the default form submission
+  event.preventDefault();
+
+  // get the input values
+  const title = document.getElementById('title').value;
+  const price = document.getElementById('price').value;
+  const img = document.getElementById('image').value;
+  const category = document.getElementById('Category').value;
+  const quantity = document.getElementById('Quantity').value;
+
+  // create an object with the data
+  const data = {
+    title: title,
+    price: price,
+    img: img,
+    category: category,
+    quantity: quantity
+  };
+console.log(data)
+  // send the data to the server
+  fetch('https://spotless-rose-gaiters.cyclic.app/product/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((er) => {
+            console.log(er);
+        });
+});
+
+</script>

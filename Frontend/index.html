@@ -12,9 +12,8 @@
 <body>
     <div id="nav">
         <div id="first">
-            <div><a href="#">Men</a></div>
-            <div><a href="#">Women</a></div>
-            <div class="hide"><a href="#">Artist collab</a></div>
+            <div><a href="./product.html">Men</a></div>
+            <div><a href="./product.html">Women</a></div>
             <div class="hide"><a href="#">Collection</a></div>
 
         </div>
@@ -23,13 +22,13 @@
         </div>
 
         <div class="icon">
-            <input type="search" id="search" placeholder="Search Products">
+            <input type="search" style="height: 30px; border: 2px solid rgb(33, 79, 93);" id="search" placeholder="Search Products">
 
-            <i id="searchLogo" class="fa-solid fa-magnifying-glass fa-beat"></i>
+            <!-- <i id="searchLogo" class="fa-solid fa-magnifying-glass fa-beat"></i> -->
 
             <i class="fa-regular fa-star"></i>
-            <i id="userlogo" class="fa-regular fa-user"></i><span id="user"></span>
-            <button id="logout" onclick="localStorage.clear(); location='./index.html'"><i class="fa-solid fa-user-xmark fa-shake"></i>Logout</button>
+            <i id="userlogo" class="fa-regular fa-user"></i><span style="font-size: 17px; text-decoration:underline ;" id="user"></span>
+            <button id="logout" onclick="localStorage.clear(); location='./index.html'"><i class="fa-solid fa-user-xmark"></i></button>
 
             <i id="cartbtn" class="fa-solid fa-bag-shopping"></i>
         </div>
